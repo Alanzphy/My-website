@@ -5,7 +5,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://Alanzphy.github.io", // Updated with your GitHub username
-  base: "/My-website/", // Updated with your repository name
+  site: "https://iamalanrz.com", // Your custom domain
+  base: "/", // Set to root as the custom domain points to the project root
   integrations: [mdx(), sitemap()],
 });
