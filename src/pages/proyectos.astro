@@ -1,0 +1,124 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+// Example project data (in the future you could move this to a .js or .json file)
+const proyectos = [
+	{
+		titulo: "Project Name 1",
+		descripcion: "A brief description of what this project is about, the technologies used, and its current status.",
+		link: "#",
+		// Optional: add the path to your image in the 'public/images/proyectos/' folder
+		// imagen: "/images/proyectos/proyecto1-thumb.jpg"
+		imagen: "https://via.placeholder.com/400x200.png?text=Project+1" // Placeholder text remains generic
+	},
+	{
+		titulo: "Project Name 2",
+		descripcion: "Another interesting project I've been working on. Challenges, learnings, and next steps.",
+		link: "#",
+		imagen: "https://via.placeholder.com/400x200.png?text=Project+2" // Placeholder text remains generic
+	},
+	{
+		titulo: "Project 3 (No Thumbnail)",
+		descripcion: "This project does not have a thumbnail configured, to show how it would look.",
+		link: "#"
+		// No 'imagen' property
+	}
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Projects - ${SITE_TITLE}`} description="A showcase of my personal and professional projects." />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>My Projects</h1>
+			<p>
+				Here you can find a selection of projects I have worked on or am currently developing.
+			</p>
+
+			<section id="proyectos-lista">
+				<h2>Featured Projects</h2>
+				{proyectos.map(proyecto => (
+					<article class="proyecto">
+						{proyecto.imagen && ( // Only show the image if it's defined
+							<img src={proyecto.imagen} alt={`Thumbnail of ${proyecto.titulo}`} class="proyecto-miniatura" />
+						)}
+						<h3>{proyecto.titulo}</h3>
+						<p>{proyecto.descripcion}</p>
+						<a href={proyecto.link}>View more details or repository</a>
+					</article>
+				))}
+			</section>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+<style>
+	main {
+		margin: auto;
+		padding: 1em;
+		max-width: 80ch;
+	}
+	h1 {
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	.proyecto {
+		border: 1px solid var(--border-color); /* Usando variable */
+		padding: 1em;
+		margin-bottom: 1.5em;
+		border-radius: 8px;
+		background-color: var(--bg-color); /* Usando variable para el fondo de la tarjeta */
+		transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave */
+	}
+	html.theme-dark .proyecto { /* Estilos específicos para modo oscuro */
+		background-color: var(--code-bg-color); /* Un color de fondo ligeramente diferente del principal en oscuro */
+	}
+	.proyecto-miniatura {
+		width: 100%; /* Hace la imagen responsiva al ancho de la tarjeta */
+		max-height: 250px; /* Limita la altura máxima */
+		object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+		border-radius: 4px; /* Bordes redondeados para la imagen */
+		margin-bottom: 1em; /* Espacio debajo de la imagen */
+	}
+	.proyecto h3 {
+		margin-top: 0;
+		color: var(--heading-color); /* Usando variable */
+	}
+	.proyecto p {
+		color: var(--text-color); /* Usando variable */
+		line-height: 1.6;
+	}
+	.proyecto a {
+		display: inline-block;
+		margin-top: 0.5em;
+		padding: 0.5em 1em;
+		background-color: var(--link-color); /* Usando variable */
+		color: var(--bg-color); /* Texto del botón contrastante con el fondo del enlace */
+		text-decoration: none;
+		border-radius: 4px;
+		font-weight: bold;
+		transition: background-color 0.3s ease;
+	}
+	.proyecto a:hover {
+		background-color: var(--link-hover-color); /* Usando variable */
+	}
+
+	#proyectos-lista {
+		margin-top: 2em;
+	}
+
+	#proyectos-lista h2 {
+		border-bottom: 2px solid var(--border-color);
+		padding-bottom: 0.5em;
+		margin-bottom: 1em;
+		color: var(--heading-color);
+	}
+</style>

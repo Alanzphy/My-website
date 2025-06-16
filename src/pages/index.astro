@@ -1,0 +1,60 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en"> {/* Changed from es to en */}
+	<head>
+		<BaseHead title={`About Me - ${SITE_TITLE}`} description={SITE_DESCRIPTION} /> {/* Changed from Quién Soy */}
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>About Me</h1> {/* Changed from Sobre Mí */}
+			<p>
+				Hi! I'm [Your Name/Nickname]. Welcome to my personal space.
+			</p>
+			<p>
+				Here you can write an introduction about yourself: who you are, what you do, your interests, passions, etc.
+				This is your chance to introduce yourself to the world.
+			</p>
+			<img src="/images/your-photo.jpg" alt="A photo of you" style="max-width: 300px; border-radius: 50%; display: block; margin: 2em auto;" /> {/* Changed alt text */}
+
+			<h2>My Story</h2> {/* Changed from Mi Historia */}
+			<p>
+				Tell a bit about your journey, how you got to where you are now.
+			</p>
+
+			<h2>My Skills</h2> {/* Changed from Mis Habilidades */}
+			<ul>
+				<li>Skill 1</li>
+				<li>Skill 2</li>
+				<li>Skill 3</li>
+				{/* ... and so on */}
+			</ul>
+
+			<h2>Contact</h2> {/* Changed from Contacto */}
+			<p>
+				You can find me on [Link to LinkedIn/Twitter/GitHub] or send me an email at [your email].
+			</p>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+<style>
+	main {
+		margin: auto;
+		padding: 1em;
+		max-width: 70ch; /* Ajustado para texto más legible */
+		line-height: 1.6;
+	}
+	h1, h2 {
+		text-align: center;
+		margin-bottom: 0.5em;
+		margin-top: 1.5em;
+	}
+</style>
